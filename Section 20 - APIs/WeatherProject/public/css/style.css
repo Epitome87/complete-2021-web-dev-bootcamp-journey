@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
+
+/* Good practice to do this on all projects */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Good practie to do this on all projects */
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  background-color: #80add7;
+  color: #ebf2ea;
+  background-image: url(../images/77.jpg);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  animation: 15s ease-in-out 5s infinite alternate full-bounce;
+}
+
+.container {
+  width: 90vw;
+  max-width: 800px;
+  height: 90vh;
+  margin: 5vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 5px solid red; */
+}
+
+h1 {
+  color: #80add7;
+  /* background-color: rgba(235, 242, 234, 0.5); */
+  border-radius: 15px;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  animation: 4s linear 1s infinite alternate bounce;
+}
+
+.weather-card {
+  background-color: rgba(128, 173, 215, 0.5);
+  width: 80%;
+  /* border: 2px solid #ebf2ea; */
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 50px;
+  box-shadow: 2px 5px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.weather-card form {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-card form input,
+.weather-card form select {
+  box-sizing: content-box;
+  font-size: 1rem;
+  height: 35px;
+  width: 35%;
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 5px 20px;
+  text-align: left;
+}
+
+.weather-card form input:focus {
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.weather-card button {
+  background-color: #80add7;
+  color: #ebf2ea;
+  font-family: inherit;
+  font-size: 2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 5px rgba(0, 0, 0, 0.15);
+  margin: 20px 10px 10px 10px;
+  padding: 5px 15px;
+  transition: 0.2s ease;
+}
+
+.weather-card button:hover {
+  cursor: pointer;
+  /* transform: scale(1.1); */
+  background-color: hsl(209, 52%, 55%);
+}
+
+.weather-card button:active {
+  transform: scale(0.98);
+  box-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.weather-card input:focus,
+.weather-card select:focus {
+  outline: none;
+}
+
+@media (min-width: 800px) {
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes full-bounce {
+  0% {
+    background-position-y: top;
+  }
+
+  100% {
+    background-position-y: bottom;
+  }
+}
+
+@keyframes cloud-movement-vertical {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-75%);
+  }
+}
+
+/**
+ * Clouds
+ */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.cloud {
+  position: absolute;
+  top: 20vh;
+  width: 300px;
+  /* right: auto; */
+  opacity: 1;
+}
+
+.cloud.front {
+  z-index: 9;
+}
+
+.cloud.distant {
+  z-index: 1;
+}
+
+.cloud.background {
+  z-index: 1;
+}
+
+/*Cloud Sizing*/
+.cloud.smaller {
+  margin-left: 10vw;
+  width: 100px;
+  /* margin-top: 50px; */
+  top: 5vh;
+  width: 150px;
+}
+
+.cloud.small {
+  margin-left: 25vw;
+  width: 150px;
+  /* I'm adding top margin */
+  top: 50vh;
+  width: 225px;
+}
+
+.cloud.big {
+  width: 500px;
+  /* margin-top: 100px; */
+  margin-left: 35vw;
+  top: 0vh;
+  width: 600px;
+}
+
+.cloud.massive {
+  width: 1000px; /* 600px */
+  top: 20vh;
+  margin-left: 40vw;
+  width: 1100px;
+}
+
+/*Cloud: Animation*/
+.cloud {
+  /* -webkit-animation-name: cloud-movement;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
+
+  -moz-animation-name: cloud-movement;
+  -moz-animation-timing-function: linear;
+  -moz-animation-direction: forwards;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 8s;
+
+  animation-name: cloud-movement;
+  animation-timing-function: linear;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  animation-duration: 8s; */
+
+  /* animation: 4s linear 1s infinite alternate bounce; */
+  animation:
+   /* cloud-movement-vertical 15s ease-in-out 5s infinite alternate, */ cloud-movement
+    33s ease-in-out 0.1s infinite forwards;
+}
+
+.clouds {
+  animation: cloud-movement-vertical 15s ease-in-out 5s infinite alternate;
+}
+.slow {
+  /* 9.2s */
+  -webkit-animation-duration: 27s;
+  -moz-animation-duration: 27s;
+  animation-duration: 27s;
+}
+
+.slower {
+  /* 11.2s */
+  -webkit-animation-duration: 33s;
+  -moz-animation-duration: 33s;
+  animation-duration: 33s;
+}
+
+.slowest {
+  /* 13.5s */
+  -webkit-animation-duration: 39s;
+  -moz-animation-duration: 39s;
+  animation-duration: 39s;
+}
+
+.super-slow {
+  /* 20.5s */
+  -webkit-animation-duration: 60s;
+  -moz-animation-duration: 60s;
+  animation-duration: 60s;
+}
+
+@keyframes cloud-movement {
+  0% {
+    opacity: 0.1;
+    -webkit-transform: translateX(300px);
+    -moz-transform: translateX(300px);
+    transform: translateX(300px);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-120vw);
+    -moz-transform: translateX(-120vw);
+    transform: translateX(-120vw);
+  }
+}
