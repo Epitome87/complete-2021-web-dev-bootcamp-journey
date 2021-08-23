@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
+:root {
+  --scroll-duration: 60s;
+}
 /* Good practice to do this on all projects */
 *,
 *::before,
@@ -23,8 +26,9 @@ body {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-
-  animation: 15s ease-in-out 5s infinite alternate full-bounce;
+  /* 15s */
+  animation: var(--scroll-duration) ease-in-out 5s infinite alternate
+    full-bounce;
 }
 
 .container {
@@ -49,14 +53,31 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
   /* background-color: rgba(235, 242, 234, 0.5); */
-  font-family: Modak;
+
+  /* font-family: Modak;
   border-radius: 15px;
   padding: 5px 10px;
   text-align: center;
   font-size: 5rem;
   font-weight: 100;
   line-height: 4rem;
-  animation: 4s linear 1s infinite alternate bounce;
+  animation: 5s linear 1s infinite alternate bounce; */
+
+  text-align: center;
+  position: relative;
+  user-select: none;
+}
+
+h1 span {
+  display: inline-block;
+  font-family: Modak;
+  border-radius: 15px;
+
+  font-size: 5rem;
+  font-weight: 100;
+  line-height: 2rem;
+
+  animation: 5s linear 0.1s infinite alternate bounce;
 }
 
 .weather-card {
@@ -154,7 +175,7 @@ h1 {
   }
 
   100% {
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
 }
 
@@ -270,7 +291,8 @@ h1 {
 }
 
 .clouds {
-  animation: cloud-movement-vertical 15s ease-in-out 5s infinite alternate;
+  animation: cloud-movement-vertical var(--scroll-duration) ease-in-out 5s
+    infinite alternate;
 }
 .slow {
   /* 9.2s */
