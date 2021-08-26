@@ -1,0 +1,18 @@
+body {
+  background-color: white;
+}
+
+.container {
+  width: 80%;
+}
+
+.form-compose {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}

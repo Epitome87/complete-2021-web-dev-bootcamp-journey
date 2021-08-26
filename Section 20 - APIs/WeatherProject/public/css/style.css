@@ -81,7 +81,8 @@ h1 span {
 }
 
 .weather-card {
-  background-color: rgba(128, 173, 215, 0.5);
+  background-color: rgba(128, 173, 215, 0.65);
+  /* background-color: rgba(191, 157, 122, 0.5); */
   width: 80%;
   /* border: 2px solid #ebf2ea; */
   border-radius: 15px;
@@ -155,9 +156,10 @@ h1 span {
   transition: 0.2s ease;
 }
 
-.weather-card button:hover {
+.weather-card button:hover,
+.weather-card button:focus {
+  outline: none;
   cursor: pointer;
-  /* transform: scale(1.1); */
   background-color: hsl(209, 52%, 55%);
 }
 

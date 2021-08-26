@@ -17,7 +17,7 @@ title.innerHTML = title.innerText
   .split('') // Split into array of letters
   .map((letter, index) => {
     let randomDelay = Math.floor(Math.random() * 1000);
-    let randomDuration = Math.floor(Math.random() * 2000) + 1000;
+    let randomDuration = Math.floor(Math.random() * 4000) + 2000;
     // let randomDuration = Math.floor(Math.random() * 1000).clamp(randomDelay, 500, 1000);
     // return `<span style="animation-delay:${index * 100}ms">${letter}</span>`;
     if (letter === ' ') {
