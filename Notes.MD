@@ -25,11 +25,12 @@
 
 ## Section 4: Intro to CSS
 
--Can incorporate Styling 3 different ways: 1) Inline styling. 2) Internal styling. 3) External styling (css files)
+- Can incorporate Styling 3 different ways: 1) Inline styling. 2) Internal styling. 3) External styling (css files)
 
-- 1. Inline: `<body style="background-color: blue;">`
-- 2. Internal: `<style> body { background-color: blue; } </style>`
-- 3. External: Inside the `<head>` tag: `<link rel="stylesheet" href="/css/styles.css">` The rel attribute stands for "relationship"! Can also add an optional type="text/css" -- but this is not required. **If an href starts out with a forward-slash, it means start out in the root of your website. When you have a static web file that isn't hosted anywhere, you cannot tap into the root!**
+  1. Inline: `<body style="background-color: blue;">`
+  2. Internal: `<style> body { background-color: blue; } </style>`
+  3. External: Inside the `<head>` tag: `<link rel="stylesheet" href="/css/styles.css">` The rel attribute stands for "relationship"! Can also add an optional type="text/css" -- but this is not required. **If an href starts out with a forward-slash, it means start out in the root of your website. When you have a static web file that isn't hosted anywhere, you cannot tap into the root!**
+
 - Precedence: Inline styling gets highest precedence, then internal, then external.
 - Best Practice for CSS: Have all your properties in alphabetical order if you have a lot?!
 - Try to change CSS elements via their ID sparingly.
@@ -46,10 +47,12 @@
 - Display of "none" removes it from the document -- as if it never existed in the first place! Or you can set the "visibility" attribute on an element to "hidden" to simply make the content hidden, but the space it consumes on the document will be preserved.
 - Three rules for default positioning in HTML: 1) Content is everything - inline elements take up as much space as their content dictates, block elements take up the full line but their height is determined by their content. 2) Order comes from code -- e.g, the order you write elements in the HTML will determine their order on the page. 3) Children sit on parents -- e.g, elements inside of other elements get drawn on top of their parent.
 - To make changes to these default positioning rules, we can use the position property, which can take the following values: 1) Static 2) Relative 3) Absolute 4) Fixed (and others)
-- 1. Static: Go along with the the HTML rules and keep to the default HTML flow.
-- 2. Relative: Position the element relative to how it would have been positioned had it been Static. Example. position: relative; left: 30px; will push the element 30px more to the right than where it would normally be. This will not push other elements out of their default positioning -- it's as if the old (Static) position of this now Relative positioned element was kept, and everything else just flows around it as if it was never moved. (It's like the element left a ghost of itself where it used to be in order for the other elements to retain their positions!) Can be confusing, but saying left: 100px means give its LEFT MARGIN 100px extra from what it used to be, so this pushes the element RIGHT. right: 100px means give its old position a margin-right of 100px, which will push this element 100px LEFT.
-- 3. Absolute: Position the element relative to its parent element. So now right: 30px means adding a margin-right from the parent and our Absolute positioned element. Name can be confusing (since it's RELATIVE positioning) but in most cases the parent is probably the entire body of the webpage , so the positioning LOOKS like you're giving it a margin relative to the entire page, which looks like you're changing the absolute position of it. Note: Doesn't always have to be the body; if not, it is the closest parent with a relative display! So basically: It's like Relative positioning, but instead of relative to itself, it's relative to its parent! **Key difference: You're taking the element out of the flow of the document, so elements around it will be affected!**
-- 4. Fixed: Element will stay in that position, even when scrolling.
+
+  1.  Static: Go along with the the HTML rules and keep to the default HTML flow.
+  2.  Relative: Position the element relative to how it would have been positioned had it been Static. Example. position: relative; left: 30px; will push the element 30px more to the right than where it would normally be. This will not push other elements out of their default positioning -- it's as if the old (Static) position of this now Relative positioned element was kept, and everything else just flows around it as if it was never moved. (It's like the element left a ghost of itself where it used to be in order for the other elements to retain their positions!) Can be confusing, but saying left: 100px means give its LEFT MARGIN 100px extra from what it used to be, so this pushes the element RIGHT. right: 100px means give its old position a margin-right of 100px, which will push this element 100px LEFT.
+  3.  Absolute: Position the element relative to its parent element. So now right: 30px means adding a margin-right from the parent and our Absolute positioned element. Name can be confusing (since it's RELATIVE positioning) but in most cases the parent is probably the entire body of the webpage , so the positioning LOOKS like you're giving it a margin relative to the entire page, which looks like you're changing the absolute position of it. Note: Doesn't always have to be the body; if not, it is the closest parent with a relative display! So basically: It's like Relative positioning, but instead of relative to itself, it's relative to its parent! **Key difference: You're taking the element out of the flow of the document, so elements around it will be affected!**
+  4.  Fixed: Element will stay in that position, even when scrolling.
+
 - Text-align: center can center everything in a parent div as long as it doesn't have a width. If it has a width, you can use margin: auto to center.
 - Specifying 100% for font-size is the same as 16px; This is the same as specifying 1em.
 - Float property -- lets you have an image (or other div?) "float" beside another element instead of being on their own block. Can do float: left to have the image wrap to the left side of neighboring elements (those in the same div, or if or block), or float: right to have it wrap on the right side. If you don't want one of the elements that is currently wrapping around the floated element, you can specify its "clear" property along with the side you wish to "clear" from floating, such as "left" or "right" in the above case. Use of Float and Clear seem to be outdated. Only use Float for wrapping text around elements, not for positioning!
@@ -75,3 +78,13 @@
 ## Section 10: Intermediate JS
 
 - Math.random() returns a decimal with 16 decimal places.
+
+## Section 24: Databases
+
+| MySQL                 | MongoDB                           |
+| --------------------- | --------------------------------- |
+| More Mature           | Shiny and New                     |
+| Table Structure       | Document Structure                |
+| Requires a Schema     | More Flexible to Changes          |
+| Great w/Relationships | Not Great w/Complex Relationships |
+| Scales Vertically     | Horizontally Scalable             |
