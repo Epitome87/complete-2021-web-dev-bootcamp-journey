@@ -88,3 +88,14 @@
 | Requires a Schema     | More Flexible to Changes          |
 | Great w/Relationships | Not Great w/Complex Relationships |
 | Scales Vertically     | Horizontally Scalable             |
+
+## Section 25: MongoDB
+
+- Practiced using the Mongo shell
+- Practiced using MongoDB's native driver in a Node app
+
+## Section 26: Mongoose
+
+- Most Node developers who use MongoDB will use a package called Mongoose
+  - This is what's called an ODM -- Object Document Mapper
+  - Allows Node.js app (which speaks in JavaScript objects) to talk to MongoDB database -- which speaks in language of documents and collections and databases
