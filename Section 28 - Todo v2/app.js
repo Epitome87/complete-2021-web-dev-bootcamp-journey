@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const _ = require('lodash');
 const date = require(__dirname + '/date.js');
 
 const app = express();
@@ -16,6 +17,16 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+const listSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  items: [itemSchema],
+});
+
+const List = mongoose.model('List', listSchema);
 
 const Item = mongoose.model('Item', itemSchema);
 
@@ -34,25 +45,69 @@ app.get('/', function (req, res) {
   });
 });
 
+app.get('/:customListName', (req, res) => {
+  const customListName = _.capitalize(req.params.customListName);
+
+  List.findOne({ name: customListName }, (error, foundList) => {
+    if (!error) {
+      if (foundList) {
+        console.log('List already exists');
+        res.render('list', {
+          listTitle: customListName,
+          todoItems: foundList.items,
+        });
+      } else {
+        const list = new List({
+          name: customListName,
+          items: defaultTodos,
+        });
+        list.save();
+        res.redirect(`/${customListName}`);
+      }
+    }
+  });
+});
+
 // POST function for home route
 app.post('/', function (req, res) {
+  const listName = req.body.list;
   const newItem = new Item({
     name: req.body.newItem,
   });
 
-  // Save the posted todo item to our database
-  newItem.save();
-
-  res.redirect('/');
+  if (listName === 'Today') {
+    newItem.save();
+    res.redirect('/');
+  } else {
+    List.findOne({ name: listName }, (error, foundList) => {
+      foundList.items.push(newItem);
+      foundList.save();
+      res.redirect(`/${listName}`);
+    });
+  }
 });
 
 app.post('/delete', (req, res) => {
+  const listName = req.body.listName;
   const checkedItemId = req.body.checkbox;
-  Item.findByIdAndRemove(checkedItemId, (error) => {
-    if (!error) console.log('Succesfully deleted ' + checkedItemId);
-  });
 
-  res.redirect('/');
+  if (listName === 'Today') {
+    Item.findByIdAndRemove(checkedItemId, (error) => {
+      if (!error) console.log('Succesfully deleted ' + checkedItemId);
+    });
+
+    res.redirect('/');
+  } else {
+    List.findOneAndUpdate(
+      { name: listName },
+      { $pull: { items: { _id: checkedItemId } } },
+      (error, foundList) => {
+        if (!error) {
+          res.redirect(`/${listName}`);
+        }
+      }
+    );
+  }
 });
 
 // GET function for About route
@@ -64,12 +119,13 @@ app.listen(3000, function () {
   console.log('Server is running on port 3000');
 });
 
+const defaultTodos = [
+  new Item({ name: 'Welcome to your todo list!' }),
+  new Item({ name: 'Hit the + button to add a new item.' }),
+  new Item({ name: '<-- Hit this to delete an item.' }),
+];
+
 function fillWithDummyItems() {
-  const defaultTodos = [
-    new Item({ name: 'Welcome to your todo list!' }),
-    new Item({ name: 'Hit the + button to add a new item.' }),
-    new Item({ name: '<-- Hit this to delete an item.' }),
-  ];
   Item.insertMany(defaultTodos, (error) => {
     if (error) console.log('Error: ', error);
     else console.log('Successfully added items to database');
