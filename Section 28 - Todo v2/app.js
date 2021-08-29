@@ -9,7 +9,16 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/todolistDB');
+const databaseName = 'todoListDB';
+const localDatabaseURL = 'mongodb://localhost:27017';
+const cloudDatabaseURL =
+  'mongodb+srv://Matthew:Heaven87@cluster0.1ryx5.mongodb.net';
+
+// Local Database
+// mongoose.connect(`${localDatabaseURL}${databaseName}`);
+
+// MongoDB Atlas Database
+mongoose.connect(`${cloudDatabaseURL}/${databaseName}`);
 
 const itemSchema = new mongoose.Schema({
   name: {
