@@ -122,8 +122,13 @@ app.get('/about', function (req, res) {
   res.render('about');
 });
 
+const port = process.env.PORT;
+if (!port) {
+  port = 3000;
+}
+
 app.listen(3000, function () {
-  console.log('Server is running on port 3000');
+  console.log('Server has started succesfully!');
 });
 
 const defaultTodos = [

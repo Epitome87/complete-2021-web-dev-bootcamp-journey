@@ -143,3 +143,10 @@ footer {
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }
+
+@media screen and (orientation: portrait) {
+  .container {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+}

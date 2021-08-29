@@ -99,3 +99,49 @@
 - Most Node developers who use MongoDB will use a package called Mongoose
   - This is what's called an ODM -- Object Document Mapper
   - Allows Node.js app (which speaks in JavaScript objects) to talk to MongoDB database -- which speaks in language of documents and collections and databases
+
+## Section 31 - Build Your Own REST API
+
+### What Is REST?
+
+- REST: REpresentational State Transfer
+  - Rules to follow when building web APIs
+- 2 most important parts to making your API RESTful:
+  - Use HTTP Request Verbs
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+  - Use Specific Patterns of Routes / Endpoint URLS
+- GET: Basically the same as "Read" in our CRUD function. Like searching our DB and returning the result.
+- POST: Corresponds to the "Create" word in our CRUD function. Like creating entries in our DB (using forms, etc)
+- PUT / PATCH: Update our data.
+  - PUT: Updating DB by sending entire entry to replace previous one
+  - PATCH: Only sending the piece of data that needs to be updated, instead of the entire entry
+- DELETE: Same as "Delete" in CRUD. Destroys piece of data in our DB
+- RESTful Routing, example:
+  | HTTP Verbs | /articles | /articles/jack-bauer |
+  |-------------|-------------------------------|---------------------------------------|
+  | GET | Fetches **all** the articles | Fetches **the** article on jack-bauer |
+  | POST | Creates **one** new article | - |
+  | PUT | - | Updates **the** article on jack-bauer |
+  | PATCH | - | Updates **the** article on jack-bauer |
+  | DELETE | Deletes **all** the articles | Deletes **the** article on jack-bauer |
+
+### Creating a DB with Robo 3T
+
+- Robo 3T (RoboMongo)
+  - GUI commonly used with MongoDB
+
+
+### Set Up Server Challenge
+- Typical Steps:
+  - Create new directory (Wiki-API)
+  - Initialize NPM and install body-parser (not required now), mongoose, ejs and epxress
+  - Create a new file called app.js
+  - Inside app.js, add server code (Write/Copy)
+  - Setup MongoDB:
+    - DB name is wikiDB
+    - Collection name is articles
+    - Document has 2 fields: title and content
