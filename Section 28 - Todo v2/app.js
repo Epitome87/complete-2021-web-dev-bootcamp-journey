@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const _ = require('lodash');
+require('dotenv').config();
 const date = require(__dirname + '/date.js');
 
 const app = express();
@@ -9,16 +10,13 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-const databaseName = 'todoListDB';
 const localDatabaseURL = 'mongodb://localhost:27017';
-const cloudDatabaseURL =
-  'mongodb+srv://Matthew:Heaven87@cluster0.1ryx5.mongodb.net';
 
 // Local Database
-// mongoose.connect(`${localDatabaseURL}${databaseName}`);
+// mongoose.connect(`${localDatabaseURL}${DATABASE_NAME}`);
 
 // MongoDB Atlas Database
-mongoose.connect(`${cloudDatabaseURL}/${databaseName}`);
+mongoose.connect(`${process.env.DATABASE_HOST}/${process.env.DATABASE_NAME}`);
 
 const itemSchema = new mongoose.Schema({
   name: {
